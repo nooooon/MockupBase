@@ -1,0 +1,69 @@
+$pcBaseWidth : 1285px;
+$spBaseWidth: 750px;
+
+/* color */
+$color-primary: #FF9409;
+$color-secondary: #44BFCA;
+$color-dark: #242424;
+
+*{
+  word-break: break-all;
+}
+
+html, body{
+  height: 100%;
+  width: 100%;
+}
+
+body{
+//  @include fontNotoLight();
+  
+  color: $color-dark;
+  font-size: 16px;
+  line-height: (30px / 16px);
+}
+
+img{
+  max-width: 100%;
+  height: auto;
+  vertical-align: bottom;
+}
+
+button{
+  background-color: transparent;
+  border: none;
+  outline: none;
+  //appearance: none;
+}
+
+a{
+  color: $color-secondary;
+  cursor: pointer;
+  
+  &:link{
+    
+  }
+  &:visited{
+    
+  }
+  &:hover{
+    
+  }
+  &:active{
+    
+  }
+}
+
+ul, li, ol{
+  list-style-type: none;
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6{
+  font-weight: normal;
+  margin-bottom: 0;
+}
+
+p{
+  margin-bottom: 0;
+}
