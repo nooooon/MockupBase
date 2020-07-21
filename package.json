@@ -21,7 +21,7 @@
     "@types/jquery": "^3.3.29",
     "@types/node": "^11.9.3",
     "gsap": "^2.0.2",
-    "jquery": "^2.2.4"
+    "jquery": "^3.5.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.4.3",
