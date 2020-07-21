@@ -1,6 +1,6 @@
 {
   "name": "MockupBase",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "MockupBase",
   "author": "keishu",
   "license": "MIT",
@@ -13,6 +13,10 @@
     "dev": "NODE_ENV=dev gulp",
     "production": "NODE_ENV=production gulp"
   },
+  "browserslist": [
+    "last 4 versions",
+    "ie 11"
+  ],
   "dependencies": {
     "@types/jquery": "^3.3.29",
     "@types/node": "^11.9.3",
@@ -24,6 +28,7 @@
     "@babel/core": "^7.4.3",
     "@babel/polyfill": "^7.4.3",
     "@babel/preset-env": "^7.4.3",
+    "autoprefixer": "^9.8.5",
     "babel-loader": "^7.1.4",
     "babelify": "^10.0.0",
     "browser-sync": "^2.26.10",
@@ -31,11 +36,12 @@
     "gulp": "^3.9.1",
     "gulp-babel": "^8.0.0",
     "gulp-changed": "^3.2.0",
+    "gulp-clean-css": "^4.3.0",
     "gulp-consolidate": "^0.2.0",
     "gulp-iconfont": "^10.0.3",
     "gulp-notify": "^3.2.0",
-    "gulp-pleeease": "^2.0.2",
     "gulp-plumber": "^1.1.0",
+    "gulp-postcss": "^8.0.0",
     "gulp-sass": "^4.0.1",
     "gulp-uglify": "^3.0.2",
     "imports-loader": "^0.8.0",

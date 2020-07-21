@@ -8,7 +8,9 @@ var buffer = require("vinyl-buffer");
 var uglify      = require('gulp-uglify');
 var source = require('vinyl-source-stream');
 var sass = require('gulp-sass');
-var pleeease = require('gulp-pleeease');
+var postcss = require('gulp-postcss'); //autoprefixerを使うのに必要
+var autoprefixer = require('autoprefixer'); //prefixをつける
+var cleanCss = require('gulp-clean-css'); //css圧縮
 var browserSync = require('browser-sync');
 var plumber = require("gulp-plumber");
 var notify = require("gulp-notify");
@@ -58,12 +60,11 @@ gulp.task("sass", function() {
   return gulp.src('src/sass/*.scss')
     .pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
     .pipe(sass({errLogToConsole: true, outputStyle: 'expanded'}))
-    .pipe(pleeease({
-      autoprefixer: {
-        browsers: ['last 4 versions']
-      },
-      "minifier": env === "production" ? true : false,
-    }))
+    .pipe(postcss([ autoprefixer({
+      grid: 'autoplace',
+      cascade: false
+    }) ]))
+    .pipe(cleanCss())
     .pipe(gulp.dest(`${htdocsDir}/css`));
 });
 
