@@ -5,7 +5,7 @@ var babel = require("gulp-babel");
 var babelify = require('babelify');
 var browserify = require("browserify");
 var buffer = require("vinyl-buffer");
-var uglify      = require('gulp-uglify');
+var uglify = require('gulp-uglify');
 var source = require('vinyl-source-stream');
 var sass = require('gulp-sass');
 var postcss = require('gulp-postcss'); //autoprefixerを使うのに必要
@@ -14,8 +14,6 @@ var cleanCss = require('gulp-clean-css'); //css圧縮
 var browserSync = require('browser-sync');
 var plumber = require("gulp-plumber");
 var notify = require("gulp-notify");
-var iconfont = require('gulp-iconfont');
-var consolidate = require('gulp-consolidate');
 var runSequence = require('run-sequence');
 var env = process.env.NODE_ENV;
 
@@ -74,32 +72,6 @@ gulp.task('html', function(){
   .pipe(gulp.dest(htdocsDir));
 });
 
-// icon font
-gulp.task('iconfont', function(){
-  return gulp.src(['src/assets/iconfont/*.svg'])
-  .pipe(iconfont({
-    startUnicode: 0xF001,
-    fontName: 'iconfont',
-    formats: ['ttf', 'eot', 'woff', 'svg'],
-    appendCodepoints: false,
-    normalize: true,
-    fontHeight: 1000,
-    descent: 1000/4,
-    timestamp: runTimestamp
-  })).on('glyphs', function(glyphs) {
-    gulp.src('src/assets/iconfont/template/_icons.scss')
-    .pipe(consolidate('lodash', {
-      glyphs: glyphs.map(function(glyph) {
-        return { fileName: glyph.name, codePoint: glyph.unicode[0].charCodeAt(0).toString(16).toUpperCase() };
-      }),
-      fontName: 'iconfont',
-      fontPath: '../fonts/',
-      cssClass: 'iconfont'
-    }))
-    .pipe(gulp.dest('src/assets/sass/foundation'));
-  }).pipe(gulp.dest(`${htdocsDir}assets/fonts`));
-});
-
 // copy
 gulp.task('copy', function(){
   return gulp.src('src/**/*.{png,jpg,gif,ico,svg,json}', {base: 'src'})
@@ -139,13 +111,13 @@ gulp.task('default', function(){
   if(env === "production"){
     // production
     htdocsDir = "./dist/";
-    runSequence('copy', 'iconfont', 'html', 'min-js', 'sass');
+    runSequence('copy', 'html', 'min-js', 'sass');
   }else if(env === "dev"){
     // development
     htdocsDir = "./dist/";
-    runSequence('copy', 'iconfont', 'html', 'js', 'sass');
+    runSequence('copy', 'html', 'js', 'sass');
   }else{
     // local
-    runSequence(['browser-sync', 'copy', 'iconfont'], 'html', 'js', 'sass', 'watch', 'bs-reload');
+    runSequence(['browser-sync', 'copy'], 'html', 'js', 'sass', 'watch', 'bs-reload');
   }
 });
