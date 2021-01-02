@@ -14,7 +14,6 @@ var cleanCss = require('gulp-clean-css'); //css圧縮
 var browserSync = require('browser-sync');
 var plumber = require("gulp-plumber");
 var notify = require("gulp-notify");
-var runSequence = require('run-sequence');
 var env = process.env.NODE_ENV;
 
 var runTimestamp = Math.round(Date.now() / 1000);
@@ -106,18 +105,25 @@ gulp.task('watch', function(){
   gulp.watch('./src/**/*.html', ['html']);
 });
 
-
-gulp.task('default', function(){
-  if(env === "production"){
-    // production
+function setup(done) {
+  if(env === "production" || env === "dev"){
     htdocsDir = "./dist/";
-    runSequence('copy', 'html', 'min-js', 'sass');
-  }else if(env === "dev"){
-    // development
-    htdocsDir = "./dist/";
-    runSequence('copy', 'html', 'js', 'sass');
-  }else{
-    // local
-    runSequence(['browser-sync', 'copy'], 'html', 'js', 'sass', 'watch', 'bs-reload');
   }
-});
+  done();
+}
+exports.setup = setup;
+
+gulp.task('default', gulp.series(setup, gulp.parallel('browser-sync', 'copy'), 'html', 'js', 'sass', 'watch', 'bs-reload', function(done) {
+  console.log('task default');
+  done();
+}));
+
+gulp.task('devBuild', gulp.series(setup, 'copy', 'html', 'js', 'sass', function(done) {
+  console.log('task devBuild',htdocsDir);
+  done();
+}));
+
+gulp.task('productionBuild', gulp.series('copy', 'html', 'min-js', 'sass', function(done) {
+  console.log('task production');
+  done();
+}));
