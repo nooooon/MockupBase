@@ -79,30 +79,34 @@ gulp.task('copy', function(){
 
 
 // browser sync
-gulp.task('browser-sync', function(){
+gulp.task('browser-sync', function(done){
   browserSync({
     server: {
       baseDir: htdocsDir
     }
   });
+  done();
 });
 
 // reload all browser
-gulp.task('bs-reload', function(){
+gulp.task('bs-reload', function(done){
   browserSync.reload();
+  done();
 });
 
 
-gulp.task('watch', function(){
+gulp.task('watch', function(done){
+  console.log('task watch');
   gulp.watch([
     htdocsDir + '**/*.html',
     htdocsDir + '**/*.js',
     htdocsDir + '**/*.css'
-  ], ['bs-reload']);
+  ], gulp.series('bs-reload'));
 
-  gulp.watch('./src/**/*.js', ['js']);
-  gulp.watch('./src/**/*.scss', ['sass']);
-  gulp.watch('./src/**/*.html', ['html']);
+  gulp.watch('./src/**/*.js', gulp.series('js'));
+  gulp.watch('./src/**/*.scss', gulp.series('sass'));
+  gulp.watch('./src/**/*.html', gulp.series('html'));
+  done();
 });
 
 function setup(done) {
@@ -119,11 +123,11 @@ gulp.task('default', gulp.series(setup, gulp.parallel('browser-sync', 'copy'), '
 }));
 
 gulp.task('devBuild', gulp.series(setup, 'copy', 'html', 'js', 'sass', function(done) {
-  console.log('task devBuild',htdocsDir);
+  console.log('task devBuild');
   done();
 }));
 
-gulp.task('productionBuild', gulp.series('copy', 'html', 'min-js', 'sass', function(done) {
+gulp.task('productionBuild', gulp.series(setup, 'copy', 'html', 'min-js', 'sass', function(done) {
   console.log('task production');
   done();
 }));
