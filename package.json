@@ -1,6 +1,6 @@
 {
   "name": "MockupBase",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "MockupBase",
   "author": "keishu",
   "license": "MIT",
@@ -9,7 +9,7 @@
     "url": "git://github.com/nooooon/MockupBase.git"
   },
   "scripts": {
-    "start": "gulp",
+    "start": "gulp local",
     "dev": "NODE_ENV=dev gulp devBuild",
     "production": "NODE_ENV=production gulp productionBuild"
   },
@@ -19,31 +19,29 @@
   ],
   "dependencies": {
     "@types/jquery": "^3.5.5",
-    "@types/node": "^14.14.19",
-    "gsap": "^3.5.1",
+    "@types/node": "^14.14.31",
+    "gsap": "^3.6.0",
     "jquery": "^3.5.1"
   },
   "devDependencies": {
-    "@babel/cli": "^7.12.10",
-    "@babel/core": "^7.12.10",
+    "@babel/cli": "^7.13.0",
+    "@babel/core": "^7.13.1",
     "@babel/polyfill": "^7.12.1",
-    "@babel/preset-env": "^7.12.11",
-    "autoprefixer": "^10.1.0",
+    "@babel/preset-env": "^7.13.5",
+    "autoprefixer": "^10.2.4",
     "babelify": "^10.0.0",
-    "browser-sync": "^2.26.13",
+    "browser-sync": "^2.26.14",
     "browserify": "^17.0.0",
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
-    "gulp-changed": "^4.0.2",
     "gulp-clean-css": "^4.3.0",
     "gulp-notify": "^3.2.0",
     "gulp-plumber": "^1.2.1",
     "gulp-postcss": "^9.0.0",
     "gulp-sass": "^4.1.0",
     "gulp-uglify": "^3.0.2",
-    "lodash": "^4.17.20",
-    "npm-run-all": "^4.1.5",
-    "postcss": "^8.1.0",
+    "lodash": "^4.17.21",
+    "postcss": "^8.2.6",
     "vinyl-buffer": "^1.0.1",
     "vinyl-source-stream": "^2.0.0"
   }
