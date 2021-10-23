@@ -1,4 +1,5 @@
 /* common.scss */
+@use "sass:math";
 @import "./foundation/reboot.scss";
 @import "./foundation/setting.scss";
 @import "./layout/layout.scss";

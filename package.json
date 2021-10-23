@@ -1,6 +1,6 @@
 {
   "name": "MockupBase",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "MockupBase",
   "author": "keishu",
   "license": "MIT",
@@ -38,10 +38,11 @@
     "gulp-notify": "^3.2.0",
     "gulp-plumber": "^1.2.1",
     "gulp-postcss": "^9.0.0",
-    "gulp-sass": "^4.1.0",
+    "gulp-sass": "^5.0.0",
     "gulp-uglify": "^3.0.2",
     "lodash": "^4.17.21",
     "postcss": "^8.2.6",
+    "sass": "^1.43.3",
     "vinyl-buffer": "^1.0.1",
     "vinyl-source-stream": "^2.0.0"
   }
