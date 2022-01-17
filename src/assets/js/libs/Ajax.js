@@ -1,4 +1,4 @@
-class Ajax {
+export class Ajax {
 
   constructor() {
     this.xhr = null;
@@ -66,5 +66,3 @@ class Ajax {
     }
   }
 }
-
-module.exports = Ajax;

@@ -13,8 +13,6 @@
 #### local install
     $ npm install
 #### run
-    $ npm run start
-#### development build
     $ npm run dev
-#### production build
-    $ npm run production
+#### build
+    $ npm run build

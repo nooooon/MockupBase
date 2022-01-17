@@ -1,4 +1,4 @@
-class AnimationFrame {
+export class AnimationFrame {
   constructor() {
     this._updateList = [];
     this.id = window.requestAnimationFrame(() => this._update());
@@ -34,5 +34,3 @@ class AnimationFrame {
     window.requestAnimationFrame(() => {this._update()});
   }
 }
-
-module.exports = new AnimationFrame();

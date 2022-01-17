@@ -1,0 +1,50 @@
+/* media query */
+@mixin mq_pc {
+  @media screen and (min-width: ($spWidth + 1)) {
+    @content;
+  }
+}
+
+@mixin mq_tab {
+  @media screen and (min-width: ($spWidth + 1)) and (max-width: ($pcWidth - 1)) {
+    @content;
+  }
+}
+
+@mixin mq_sp {
+  @media screen and (max-width: ($spWidth)) {
+    @content;
+  }
+}
+
+@mixin mq_mw($w) {
+  @media screen and (max-width: ($w)) {
+    @content;
+  }
+}
+
+@mixin mq_max {
+  @media screen and (min-width: ($pcWidth + 1)) {
+    @content;
+  }
+}
+
+@function get_vw($size, $viewport:375) {
+  $rate: 100 / $viewport;
+  @return $rate * $size * 1vw;
+}
+
+@function get_percent($size, $width:375) {
+  @return ($size / $width) * 100%;
+}
+
+@mixin fontVw($font_size:10){
+  font-size: $font_size * 1px;
+  font-size: get_vw($font_size);
+}
+
+@mixin fontRem($font_size, $base:16){
+  font-size: $font_size + px;
+  font-size: ($font_size / ($base * 0.625)) + rem;
+}
+

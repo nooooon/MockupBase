@@ -1,4 +1,4 @@
-class Resize {
+export class Resize {
 
   get Size() {
     return this._size;
@@ -69,5 +69,3 @@ class Resize {
   }
   
 }
-
-module.exports = new Resize();
