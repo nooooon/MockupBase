@@ -6,9 +6,7 @@
     - <http://nodejs.org/>
 
 
-### Setup
-#### global install
-    $ sudo npm install -g gulp
+### Command
     
 #### local install
     $ npm install
